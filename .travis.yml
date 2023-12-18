@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t alexkolva/new-react-app -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true alexkolva/new-react-app npm run test -- --coverage
